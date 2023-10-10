@@ -18,23 +18,6 @@ function convertToJsonString(obj) {
 	// поэтому можно все провести через проверки и записать в соответствующего вида строки
 	// (названия ключей, а также строковые свойства обрамляются двойными кавычками)
 
-	// Проверка на объект
-	if (typeof obj === 'object') {
-		// если среди obj есть объект, то записываем каждый его ключ в строку и с помощью рекурсии добавляем присоединяем соответствующее свойство
-		// данная проверка срабатывает и для основного объекта, и для внутренних
-		const objString = Object.keys(obj).map((key) => `"${key}":` + convertToJsonString(obj[key])).join(',');
-		// возвращаем итоговую строку
-		return `{${objString}}`;
-	}
-
-	// Проверка на массив
-	if (Array.isArray(obj)) {
-		// если в объекте есть массив, то копируем его элементы в новый массив, который преобразовывем в строку
-		const arrString = obj.map((item) => convertToJsonString(item)).join(',');
-		// и возвращаем в нужном виде
-		return `[${arrString}]`;
-	}
-
 	// Проверка на примитивные типы
 	if (typeof obj === 'number' || typeof obj === 'boolean' || obj === null) {
 		// если в объекте есть числа, булевы значения или null, то с помощью метода String() преобразовывем эти примитивы в строки
@@ -45,8 +28,27 @@ function convertToJsonString(obj) {
 		return `"${obj}"`;
 	}
 
+	// Проверка на массив
+	if (Array.isArray(obj)) {
+		// если в объекте есть массив, то копируем его элементы в новый массив, который преобразовывем в строку
+		const arrString = obj.map((item) => convertToJsonString(item)).join(',');
+		// и возвращаем в нужном виде
+		return `[${arrString}]`;
+	}
+
+	// Проверка на объект
+	if (typeof obj === 'object') {
+		// если среди obj есть объект, то записываем каждый его ключ в строку и с помощью рекурсии добавляем присоединяем соответствующее свойство
+		// данная проверка срабатывает и для основного объекта, и для внутренних
+		const objString = Object.keys(obj).map((key) => `"${key}":` + convertToJsonString(obj[key])).join(',');
+		// возвращаем итоговую строку
+		return `{${objString}}`;
+	}
+
 	// Возвращаем пустую строку для остальных случаев
 	return '';
 }
 
 convertToJsonString(object);
+
+console.log(convertToJsonString(object))

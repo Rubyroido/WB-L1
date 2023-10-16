@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 0;
+    margin: 10px;
+    list-style: none;
+    overflow-y: scroll;
+    height: 95vh;
+}
+
+.post {
+    box-sizing: border-box;
+    padding-bottom: 15px;
+    border-bottom: 1px solid black;
+}
+
+.images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.text {
+    margin: 10px 0 0;
+}
+
+img {
+    max-width: 300px;
+    height: auto;
+}

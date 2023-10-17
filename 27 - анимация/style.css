@@ -1,0 +1,11 @@
+body {
+    position: relative;
+}
+
+div {
+    margin-top: 300px;
+    width: 150px;
+    height: 150px;
+    background-color: green;
+    position: absolute;
+}

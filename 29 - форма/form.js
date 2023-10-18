@@ -13,3 +13,11 @@ form.addEventListener('submit', (e) => {
     // выводим на экран
     alert(`${values[0]}, ${values[1]}`)
 })
+
+// существует также другой способ получения данных из полей формы
+// это FormData. Позволяет получить значения всех полей, независимо от их количества
+// const formData = new FormData(form);
+
+// for (let [key,value] of formData) {
+//     alert(`${key} - ${value}`)
+// }
